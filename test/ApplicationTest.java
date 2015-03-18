@@ -16,6 +16,8 @@ import play.libs.F;
 import play.libs.F.*;
 import play.twirl.api.Content;
 
+import static org.mockito.Mockito.*;
+
 import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
 
@@ -32,6 +34,16 @@ public class ApplicationTest {
     public void simpleCheck() {
         int a = 1 + 1;
         assertThat(a).isEqualTo(2);
+
+        // Create and train mock
+        List<String> mockedList = mock(List.class);
+        when(mockedList.get(0)).thenReturn("first");
+
+        // check value
+        assertEquals("first", mockedList.get(0));
+
+        // verify interaction
+        verify(mockedList).get(0);
     }
 
     @Test

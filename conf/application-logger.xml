@@ -28,6 +28,9 @@
         </encoder>
     </appender>
 
+    <!-- Set logging for all Akka library classes to INFO -->
+    <logger name="akka" level="INFO" />
+
     <!-- additivity=false ensures access log data only goes to the access log -->
     <logger name="access" level="INFO" additivity="false">
         <appender-ref ref="ACCESS_FILE" />

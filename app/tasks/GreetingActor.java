@@ -4,7 +4,6 @@ import akka.actor.UntypedActor;
 import akka.dispatch.BoundedMessageQueueSemantics;
 import akka.dispatch.RequiresMessageQueue;
 import play.*;
-import play.mvc.*;
 
 public class GreetingActor extends UntypedActor implements RequiresMessageQueue<BoundedMessageQueueSemantics> {
 
@@ -14,6 +13,7 @@ public class GreetingActor extends UntypedActor implements RequiresMessageQueue<
     public void onReceive(Object message) throws Exception {
 
         if (message.equals(MESSAGE_GREETING)) {
+            // Thread.sleep(5000);
             Logger.trace("trace");
             Logger.debug("debug");
             Logger.info("info");

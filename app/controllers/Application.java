@@ -1,21 +1,30 @@
 package controllers;
 
-import com.avaje.ebean.Ebean;
+import com.google.inject.Inject;
 import models.User;
 import play.*;
 import play.db.ebean.Transactional;
 import play.mvc.*;
 
+import services.GreetingService;
 import views.html.*;
 
 import java.io.IOException;
 
 public class Application extends Controller {
 
+    @Inject
+    private GreetingService greetingService;
+
     public static Result index() {
-        func1();
 
         return ok(index.render("Your new application is ready."));
+    }
+
+    public Result greet() {
+
+        String greeting = greetingService.greeting();
+        return ok(index.render("Greet:" + greeting));
     }
 
     @Transactional
@@ -57,4 +66,5 @@ public class Application extends Controller {
 
         // Ebean.endTransaction();
     }
+
 }
